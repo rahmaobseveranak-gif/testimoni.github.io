@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirim Testimoni LessApp</title>
+<style>
+  :root {
+    --sage: #6b8f71;
+    --sage-dark: #4f6d55;
+    --cream: #faf6ee;
+    --text: #2e2a24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    padding: 24px;
+  }
+  .card {
+    max-width: 420px;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+  .icon {
+    width: 64px; height: 64px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 30px;
+  }
+  h1 { font-size: 20px; margin: 0 0 12px; }
+  p { font-size: 14px; line-height: 1.6; color: #6b665c; margin: 0 0 24px; }
+  a.btn {
+    display: inline-block;
+    background: var(--sage);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+  a.btn:active { background: var(--sage-dark); }
+  .footer { margin-top: 20px; font-size: 12px; color: #a09a8c; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">💬</div>
+    <h1>Bagikan Testimoni Kamu</h1>
+    <p>Ceritain pengalaman kakak pakai LessApp — testimoni ini bakal ditampilin di halaman depan LessApp buat bantu calon pengguna baru. Tap tombol di bawah buat langsung kirim lewat WhatsApp.</p>
+    <a class="btn" id="waLink" href="#">Kirim Testimoni via WhatsApp</a>
+    <div class="footer">LessApp — Platform Manajemen Les Privat &amp; Bimbel</div>
+  </div>
+
+  <script>
+    const phone = "628966387770";
+    const message = "Hallo kak, saya mau kirim testimoni pengalaman pakai LessApp:\n\nNama & nama bimbel/usaha les:\nSudah berapa lama pakai LessApp:\nFitur yang paling terasa manfaatnya:\nPerubahan yang dirasakan sejak pakai LessApp:\n\n";
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    document.getElementById("waLink").href = url;
+
+    // Auto-redirect setelah sebentar, biar yang buka lewat klik dari IG/link langsung kebawa
+    setTimeout(function () {
+      window.location.href = url;
+    }, 1200);
+  </script>
+</body>
+</html>
