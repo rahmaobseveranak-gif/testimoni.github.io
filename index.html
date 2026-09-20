@@ -3,79 +3,301 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kirim Testimoni LessApp</title>
+<title>Testimoni LessApp</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap');
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
   :root {
-    --sage: #6b8f71;
-    --sage-dark: #4f6d55;
-    --cream: #faf6ee;
-    --text: #2e2a24;
+    --sage-deep: #4f6d55;
+    --sage-mid:  #6b8f71;
+    --sage-soft: #EEF3EC;
+    --ink:       #1A1D2E;
+    --muted:     #6B7280;
+    --line:      #E5E9E2;
+    --white:     #FFFFFF;
   }
-  * { box-sizing: border-box; }
+
   body {
-    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(145deg, #F5F8F3 0%, #FAF9F6 60%, #F0FFF4 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--cream);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--text);
-    padding: 24px;
+    padding: 32px 16px;
   }
+
   .card {
-    max-width: 420px;
+    background: var(--white);
+    border-radius: 28px;
     width: 100%;
-    background: #fff;
-    border-radius: 20px;
-    padding: 32px 28px;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    max-width: 560px;
+    padding: 44px 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 24px 64px rgba(79,109,85,0.10);
   }
-  .icon {
-    width: 64px; height: 64px;
-    background: var(--sage);
-    border-radius: 50%;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-bottom: 24px;
+  }
+
+  .brand-icon {
+    width: 38px; height: 38px;
+    background: var(--sage-mid);
+    border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 30px;
+    font-size: 18px;
   }
-  h1 { font-size: 20px; margin: 0 0 12px; }
-  p { font-size: 14px; line-height: 1.6; color: #6b665c; margin: 0 0 24px; }
-  a.btn {
-    display: inline-block;
-    background: var(--sage);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 14px 28px;
+
+  .brand-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--sage-deep);
+  }
+
+  .intro-box {
+    background: #F8FAF7;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .intro-box .emoji { font-size: 28px; margin-bottom: 10px; display: block; }
+
+  .intro-box h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.4px;
+  }
+
+  .intro-box p {
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+
+  .field { margin-bottom: 20px; }
+
+  .field label {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--line);
     border-radius: 12px;
-    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: #FAFBF9;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-  a.btn:active { background: var(--sage-dark); }
-  .footer { margin-top: 20px; font-size: 12px; color: #a09a8c; }
+
+  .field textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--sage-mid);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(107,143,113,0.10);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder { color: #C4CBC0; font-style: italic; }
+
+  .optional-tag {
+    font-weight: 400;
+    color: #A8AFA0;
+    font-size: 12px;
+  }
+
+  .divider { border: none; border-top: 1px solid var(--line); margin: 24px 0; }
+
+  .btn-wa {
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    padding: 17px;
+    border-radius: 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15.5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.28);
+  }
+
+  .btn-wa:hover { background: #1ebe5d; box-shadow: 0 6px 24px rgba(37,211,102,0.38); }
+  .btn-wa:active { transform: scale(0.99); }
+
+  .wa-icon { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 13px;
+    color: #B0B8AC;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  #successView {
+    display: none;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .success-icon { font-size: 52px; margin-bottom: 18px; }
+
+  .success-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.4px;
+  }
+
+  .success-body { color: var(--muted); line-height: 1.8; font-size: 14.5px; }
+
+  @media (max-width: 580px) {
+    .card { padding: 32px 20px; }
+  }
 </style>
 </head>
 <body>
-  <div class="card">
-    <div class="icon">💬</div>
-    <h1>Bagikan Testimoni Kamu</h1>
-    <p>Ceritain pengalaman kakak pakai LessApp — testimoni ini bakal ditampilin di halaman depan LessApp buat bantu calon pengguna baru. Tap tombol di bawah buat langsung kirim lewat WhatsApp.</p>
-    <a class="btn" id="waLink" href="#">Kirim Testimoni via WhatsApp</a>
-    <div class="footer">LessApp — Platform Manajemen Les Privat &amp; Bimbel</div>
+
+<div class="card">
+
+  <div id="formView">
+
+    <div class="brand">
+      <div class="brand-icon">💬</div>
+      <div class="brand-name">Testimoni LessApp</div>
+    </div>
+
+    <div class="intro-box">
+      <span class="emoji">🙏</span>
+      <h1>Bagikan Testimoni Kakak</h1>
+      <p>
+        Ceritain pengalaman kakak pakai LessApp — testimoni ini bakal ditampilin
+        di halaman depan LessApp buat bantu calon pengguna baru yakin mau coba.
+      </p>
+    </div>
+
+    <div class="field">
+      <label>Nama & nama bimbel/usaha les</label>
+      <input type="text" id="q1" placeholder="Contoh: Bu Sarah — Bimbel Cerdas Ceria">
+    </div>
+
+    <div class="field">
+      <label>Sudah berapa lama pakai LessApp?</label>
+      <input type="text" id="q2" placeholder="Contoh: 3 bulan">
+    </div>
+
+    <div class="field">
+      <label>Fitur yang paling terasa manfaatnya</label>
+      <textarea id="q3" placeholder="Contoh: fitur payroll otomatis, jadi nggak perlu ngitung gaji tutor manual lagi"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Perubahan yang dirasakan sejak pakai LessApp</label>
+      <textarea id="q4" placeholder="Contoh: jadi lebih rapi, hemat waktu, orang tua lebih puas dapet laporan"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Boleh dicantumkan namanya di testimoni publik? <span class="optional-tag">(opsional)</span></label>
+      <input type="text" id="q5" placeholder="Contoh: Boleh / Cukup inisial aja / Anonim">
+    </div>
+
+    <hr class="divider">
+
+    <button class="btn-wa" onclick="kirimKeWA()">
+      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Kirim Testimoni via WhatsApp
+    </button>
+
+    <p class="footer-note">
+      WhatsApp akan terbuka otomatis · Tinggal tekan <strong>Send</strong> ✅<br>
+      Testimoni kakak langsung kami baca, izin dulu sebelum ditampilkan ke publik 🙏
+    </p>
+
   </div>
 
-  <script>
-    const phone = "628966387770";
-    const message = "Hallo kak, saya mau kirim testimoni pengalaman pakai LessApp:\n\nNama & nama bimbel/usaha les:\nSudah berapa lama pakai LessApp:\nFitur yang paling terasa manfaatnya:\nPerubahan yang dirasakan sejak pakai LessApp:\n\n";
-    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-    document.getElementById("waLink").href = url;
+  <div id="successView">
+    <div class="success-icon">💚</div>
+    <h2 class="success-title">Makasih banyak, Kak!</h2>
+    <p class="success-body">
+      Testimoni kakak sudah terkirim dan langsung kami baca.<br><br>
+      Cerita kakak bakal bantu banget calon pengguna baru buat lebih yakin coba LessApp 🙌
+    </p>
+  </div>
 
-    // Auto-redirect setelah sebentar, biar yang buka lewat klik dari IG/link langsung kebawa
-    setTimeout(function () {
-      window.location.href = url;
-    }, 1200);
-  </script>
+</div>
+
+<script>
+const WA_NUMBER = "628966387770";
+
+function kirimKeWA() {
+  const q1 = document.getElementById('q1').value.trim();
+  const q2 = document.getElementById('q2').value.trim();
+  const q3 = document.getElementById('q3').value.trim();
+  const q4 = document.getElementById('q4').value.trim();
+  const q5 = document.getElementById('q5').value.trim();
+
+  if (!q1) { alert("Isi nama & nama bimbel/usaha les dulu ya Kak 🙏"); return; }
+  if (!q2) { alert("Isi sudah berapa lama pakai LessApp ya Kak 🙏"); return; }
+  if (!q3) { alert("Ceritakan fitur yang paling bermanfaat ya Kak 🙏"); return; }
+  if (!q4) { alert("Ceritakan perubahan yang dirasakan ya Kak 🙏"); return; }
+
+  const pesan =
+`Assalamualaikum kak, saya mau kirim testimoni pengalaman pakai LessApp:
+
+*Nama & nama bimbel/usaha les:*
+${q1}
+
+*Sudah berapa lama pakai LessApp:*
+${q2}
+
+*Fitur yang paling terasa manfaatnya:*
+${q3}
+
+*Perubahan yang dirasakan sejak pakai LessApp:*
+${q4}
+${q5 ? `\n*Boleh dicantumkan namanya:*\n${q5}\n` : ''}`;
+
+  const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(pesan);
+  window.open(url, '_blank');
+
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('successView').style.display = 'block';
+}
+</script>
+
 </body>
 </html>
